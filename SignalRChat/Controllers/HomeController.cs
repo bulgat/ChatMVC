@@ -15,11 +15,13 @@ namespace SignalRChat.Controllers
 
         public ActionResult About()
         {
+          
+
             ViewBag.Message = "Your application description page.";
 
             DataMessageContext context = new DataMessageContext();
 
-         var   ListUser = (from a in context.MessageTable select a).ToList();
+         List<MessageTable> ListUser = (from a in context.MessageTable select a).ToList();
 
             return View(ListUser);
         }
