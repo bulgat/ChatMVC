@@ -10,6 +10,7 @@ namespace SignalRChat.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
         }
 
@@ -36,6 +37,8 @@ namespace SignalRChat.Controllers
         {
             return View();
         }
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
         public ActionResult CheckServer()
         {
             return View();

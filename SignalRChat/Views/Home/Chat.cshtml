@@ -86,7 +86,16 @@
                 });
                 $('#CheckServer').click(function () {
 
-                    alert("Server");
+                    var csrfToken = getCookie("CSRF-TOKEN");
+                    console.log("cook ", csrfToken);
+                   // chat.server.out("CheckServer");
+                    let promise = fetch("CheckServer", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            "X-CSRF-TOKEN": csrfToken //sending token with request
+                        } });
+                    console.log("Server ", promise);
                 });
             });
 
@@ -119,6 +128,18 @@
         function htmlEncode(value) {
             var encodedValue = $('<div />').text(value).html();
             return encodedValue;
+        }
+        function getCookie(name) {
+            if (!document.cookie) {
+                return null;
+            }
+            const csrfCookies = document.cookie.split(';')
+                .map(c => c.trim())
+                .filter(c => c.startsWith(name + '='));
+            if (csrfCookies.length === 0) {
+                return null;
+            }
+            return decodeURIComponent(csrfCookies[0].split('=')[1]);
         }
     </script>
 }
