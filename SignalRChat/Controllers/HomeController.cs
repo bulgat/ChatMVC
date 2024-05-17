@@ -36,6 +36,10 @@ namespace SignalRChat.Controllers
         {
             return View();
         }
+        public ActionResult CheckServer()
+        {
+            return View();
+        }
         public ActionResult ChatAdmin()
         {
             return View();
